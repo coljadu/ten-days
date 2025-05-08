@@ -4,6 +4,7 @@ const Project1 = () => {
     const [counter, setCounter] = useState(0);
     const [counterArray, setCounterArray] = useState<number[]>([]);
     const counterRef = useRef(0);
+    const buttonClass = "bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded";
 
     const updateCounter = (newValue: number) => {
         const newHistory = counterArray.slice(0, counterRef.current + 1);
@@ -38,14 +39,14 @@ const Project1 = () => {
     return (
         <>
             <h2 className="text-lg mb-8">This is the Counter Project</h2>
-            <div className="flex flex-row">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={handleDecrement} >-</button>
+            <div className="flex items-center space-x-4">
+                <button className={buttonClass} onClick={handleDecrement} >-</button>
                 <p className="p-8 text-lg">{counter}</p>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-full" onClick={handleIncrement}>+</button>
+                <button className={buttonClass} onClick={handleIncrement}>+</button>
             </div>
-            <div className="pt-8">
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold mr-4 px-2  py-2 rounded-full" onClick={handleUndo} disabled={counterRef.current === 0}>Undo</button>
-                <button className="bg-blue-500 hover:bg-blue-700 text-white font-bold px-2 py-2 rounded-full" onClick={handleRedo} disabled={counterRef.current >= counterArray.length - 1}>Redo</button>
+            <div className="flex items-center space-x-4">
+                <button className={buttonClass} onClick={handleUndo} disabled={counterRef.current === 0}>Undo</button>
+                <button className={buttonClass} onClick={handleRedo} disabled={counterRef.current >= counterArray.length - 1}>Redo</button>
             </div>
 
         </>
